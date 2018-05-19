@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stripe_user_id: MyString
+  active: MyString
+  boolean: MyString
+  user: one
+
+two:
+  stripe_user_id: MyString
+  active: MyString
+  boolean: MyString
+  user: two
