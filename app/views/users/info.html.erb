@@ -3,7 +3,9 @@
   <% if @subscription.active %>
     <% if @subscription.active %>
       <h3>Current plan renews at: <%= Time.at(@stripe_subscription["current_period_end"]).strftime("%D") %></h3>
-      <%= link_to "Cancel subscription", users_cancel_subscription_path %>
+      <h3>Current brand:<%= @subscription.card_brand %></h3>
+      <div><strong>Card on file:</strong> <%= @subscription.card_brand %> (**** **** **** <%= @subscription.card_last4 %>)</div>
+      <%= link_to "Cancel subscription", users_cancel_subscription_path, data: {confirm: "Are you sure you want to cancel your subscription?"} %>
     <% end %>
   <% else %>
     <%= render 'form' %>

@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 2018_05_19_163442) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "stripe_user_id"
+    t.string "card_brand"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "expires_at"
     t.boolean "active", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false

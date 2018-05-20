@@ -1,5 +1,5 @@
 <h4>Begin your $9.99 a month subscription</h4>
-<form action="/users/charge" method="POST" id="payment-form">
+<%= form_tag users_charge_path,id: "payment-form" do %>
   <span class="payment-errors"></span>
 
   <div class="row">
@@ -37,7 +37,7 @@
   </div>
 
   <%= token_tag nil %>
-</form>
+<% end %>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
@@ -57,6 +57,10 @@
       var token = response.id;
       // Insert the token into the form so it gets submitted to the server
       $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      $form.append($('<input type="hidden" name="card_brand">').val(response.card.brand));
+      $form.append($('<input type="hidden" name="card_last4">').val(response.card.last4));
+      $form.append($('<input type="hidden" name="card_exp_month">').val(response.card.exp_month));
+      $form.append($('<input type="hidden" name="card_exp_year">').val(response.card.exp_year));
       // and submit
       $form.get(0).submit();
     }
